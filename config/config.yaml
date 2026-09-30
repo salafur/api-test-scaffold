@@ -1,0 +1,11 @@
+# 环境配置：API_ENV=local|staging 切换，测试内由 fixture 指向本地演示服务
+local:
+  base_url: "http://127.0.0.1:8000"
+
+staging:
+  base_url: "https://staging.example.com"
+
+accounts:
+  admin: {username: "admin", password: "admin123"}
+  rich: {username: "alice", password: "alice123"}
+  poor: {username: "bob", password: "bob123"}

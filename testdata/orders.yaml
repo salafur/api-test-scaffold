@@ -1,0 +1,46 @@
+# 下单用例：正常场景（数据驱动）
+create_cases:
+  - name: "单个普通商品"
+    item: "keyboard"
+    qty: 1
+    unit_price: 10.0
+    expect_total: 10.0
+  - name: "批量下单"
+    item: "mouse"
+    qty: 3
+    unit_price: 5.5
+    expect_total: 16.5
+  - name: "小数金额"
+    item: "cable"
+    qty: 2
+    unit_price: 0.01
+    expect_total: 0.02
+
+# 下单用例：异常场景
+invalid_cases:
+  - name: "数量为零"
+    item: "keyboard"
+    qty: 0
+    unit_price: 10.0
+    expect_status: 400
+  - name: "负数数量"
+    item: "keyboard"
+    qty: -2
+    unit_price: 10.0
+    expect_status: 400
+  - name: "商品名为空"
+    item: "  "
+    qty: 1
+    unit_price: 10.0
+    expect_status: 400
+
+# 余额不足场景（alice 初始 30 元）
+insufficient_cases:
+  - name: "总价略超余额"
+    item: "monitor"
+    qty: 1
+    unit_price: 30.01
+  - name: "批量超余额"
+    item: "keyboard"
+    qty: 4
+    unit_price: 10.0
